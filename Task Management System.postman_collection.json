@@ -1,0 +1,420 @@
+{
+	"info": {
+		"_postman_id": "77c7dc2d-8c94-4fdc-be09-0fe64d3bbd51",
+		"name": "Task Management System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25555311"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "register other",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/auth/register?username=mido&password=mido&role=OTHER&email=ahmedshamaaa135@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "mido"
+								},
+								{
+									"key": "password",
+									"value": "mido"
+								},
+								{
+									"key": "role",
+									"value": "OTHER"
+								},
+								{
+									"key": "email",
+									"value": "ahmedshamaaa135@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login other",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"mido\",\r\n    \"password\": \"mido\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/auth/register?username=tito&password=tito&role=ADMIN&email=ahmedshamaaa1352001@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "tito"
+								},
+								{
+									"key": "password",
+									"value": "tito"
+								},
+								{
+									"key": "role",
+									"value": "ADMIN"
+								},
+								{
+									"key": "email",
+									"value": "ahmedshamaaa1352001@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"shamaa\",\r\n    \"password\": \"shamaa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/auth/register?username=shamaa&password=shamaa&role=USER&email=ahmedshamaa135@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "shamaa"
+								},
+								{
+									"key": "password",
+									"value": "shamaa"
+								},
+								{
+									"key": "role",
+									"value": "USER"
+								},
+								{
+									"key": "email",
+									"value": "ahmedshamaa135@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"tito\",\r\n    \"password\": \"tito\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "task",
+			"item": [
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzaGFtYWEiLCJpYXQiOjE3MzI5NTA5NzIsImV4cCI6MTczMjk1NDU3Mn0.qVkRKM5CLErDq4MCObDY9-O9gpn0Zgdx8h6UgBHuSf6eGnNBOviR-1j0CZFqeDFQr3GX8B1D6qGFRP832WirMg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Submit Report14  Updated\",\r\n    \"description\": \"Submit the financial report by EOD\",\r\n    \"status\": \"TODO\",\r\n    \"priority\": \"HIGH\",\r\n    \"dueDate\": \"2024-12-01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/tasks/17",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tasks",
+								"17"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzaGFtYWEiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTczMjk5OTI2MiwiZXhwIjoxNzMzMDAyODYyfQ.mGhrYdchG5iZTIChdHWU8ByF4MoSBNR2WPgvI64tH_pPDhNuAvbITnFWXdM8lLa88zCOeGmYbUh28jxlt7Nxig",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/tasks/search?page=0&size=5&status=TODO",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tasks",
+								"search"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "5"
+								},
+								{
+									"key": "status",
+									"value": "TODO"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0aXRvIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzMzMDAxNTY0LCJleHAiOjE3MzMwMDUxNjR9.WUMLiuU-zSZmSC76UsUsN-EZ8D9AquVhpK5FeeLb6mbX_9py7tJT0igKHmHPySaGjN6VUL27fDC5_hizzRz3SA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/tasks/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tasks",
+								"1"
+							],
+							"query": [
+								{
+									"key": "dueDate",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtaWRvIiwicm9sZSI6Ik9USEVSIiwiaWF0IjoxNzMyOTk5MjI2LCJleHAiOjE3MzMwMDI4MjZ9.ktbbuSV_i8V40mZTMiyeFB8OL6X00NpJpk9sw0NYWXidb762GVn3zhTZuheoMQRLDwBKyyg2sEcpWzQJKG5iAA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/tasks/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tasks",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzaGFtYWEiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTczMzAwMTU0NSwiZXhwIjoxNzMzMDA1MTQ1fQ.eJWcdAv6tavGgVcLgDEHIkMCvf4bo2S3TxigOiJs6RQH6SKk1h5BuCykaIcrQQZF_g0uH0nyQm9ne6coaroP6g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Submit Report1\",\r\n    \"description\": \"Submit the financial report by EOD\",\r\n    \"status\": \"TODO\",\r\n    \"priority\": \"HIGH\",\r\n    \"dueDate\": \"2024-12-01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
