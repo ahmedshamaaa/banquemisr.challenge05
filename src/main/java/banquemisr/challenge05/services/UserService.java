@@ -34,17 +34,19 @@ public class UserService {
             throw new RuntimeException("Invalid password!");
         }
         // إنشاء التوكن
-        String jwtToken = jwtUtils.generateJwtToken(authRequest.getUsername());
+        String jwtToken = jwtUtils.generateJwtToken(authRequest.getUsername(), user.get().getRole().toString());
+
 
         return new AuthResponse(jwtToken);
     }
+
     @Transactional
-    public User createUser(String username, String password, Role role,String email) {
-        User user = new User();
-        user.setUsername(username);
-        user.setEmail(email);
-        user.setPassword( passwordEncoder.encode(password));
-        user.setRole(role);
+    public User createUser(String username, String password, Role role, String email) {
+        User user = User.builder()
+                .username(username)
+                .email(email)
+                .password(passwordEncoder.encode(password))
+                .role(role).build();
         return userRepository.save(user);
     }
 
