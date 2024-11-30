@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -28,21 +29,16 @@ public class JwtAuthTokenFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
-        try {
-            String jwt = parseJwt(request); // استخراج التوكن من الهيدر
-            if (jwt != null && jwtUtils.validateJwtToken(jwt)) { // التحقق من التوكن
+            String jwt = parseJwt(request); // Extract the token
+            if (jwt != null && jwtUtils.validateJwtToken(jwt)) { // Validate token
                 String username = jwtUtils.getUsernameFromJwtToken(jwt);
+                String role = jwtUtils.getRoleFromJwtToken(jwt); // Extract role
 
-                // تحميل المستخدم وضبط SecurityContext
-                User userDetails = userService.findByUsername(username)
-                        .orElseThrow(() -> new RuntimeException("User not found: " + username));
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
-                        userDetails, null, Collections.emptyList());
+                        username, null, Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + role)));
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
-        } catch (Exception e) {
-            System.out.println("Cannot set user authentication: " + e.getMessage());
-        }
+
 
         filterChain.doFilter(request, response);
     }
@@ -54,4 +50,5 @@ public class JwtAuthTokenFilter extends OncePerRequestFilter {
         }
         return null;
     }
+
 }
