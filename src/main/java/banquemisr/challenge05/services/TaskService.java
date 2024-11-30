@@ -31,12 +31,7 @@ public class TaskService {
     @Autowired
     private HistoryService historyService;
     @Autowired
-    private EmailService emailService;
-    @Autowired
     private UserService userService;
-    @Autowired
-    private NotificationService notificationService;
-
     @Autowired
     private NotificationManager notificationManager;  // Inject NotificationManager
 
@@ -61,7 +56,7 @@ public class TaskService {
         historyService.logHistory(createdTask, "CREATED", userName);
 
 
-        notificationManager.notifyAllObservers("Task Created: ","Task ID: " + task.getId() + ", " +
+        notificationManager.notifyAllObservers("Task Created ", "Task ID: " + task.getId() + ", " +
                         "Title: " + task.getTitle() + ", " +
                         "Description: " + task.getDescription() + ", " +
                         "Status: " + task.getStatus() + ", " +
@@ -95,7 +90,7 @@ public class TaskService {
         historyService.logHistory(savedTask, "UPDATED", userName);
 
 
-        notificationManager.notifyAllObservers("Task Updated : ", "Task ID: " + task.getId() + ", " +
+        notificationManager.notifyAllObservers("Task Updated  ", "Task ID: " + task.getId() + ", " +
                         "Title: " + task.getTitle() + ", " +
                         "Description: " + task.getDescription() + ", " +
                         "Status: " + task.getStatus() + ", " +
@@ -113,14 +108,14 @@ public class TaskService {
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Task not found with id " + id));
         taskRepository.delete(task);
-        historyService.logHistory(task, "DELETED", performedBy);
 
         String token = performedBy.substring(7);
         String userName = jwtUtils.getUsernameFromJwtToken(token);
         User user = userService.findByUsername(userName).orElseThrow(() -> new RuntimeException("User not found with username: " + userName));
 
+        historyService.logHistory(task, "DELETED", userName);
 
-        notificationManager.notifyAllObservers("Task Deleted : ", "Task ID: " + task.getId() + ", " +
+        notificationManager.notifyAllObservers("Task Deleted  ", "Task ID: " + task.getId() + ", " +
                         "Title: " + task.getTitle() + ", " +
                         "Description: " + task.getDescription() + ", " +
                         "Status: " + task.getStatus() + ", " +

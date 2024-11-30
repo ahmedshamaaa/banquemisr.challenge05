@@ -17,9 +17,7 @@ public class History {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "task_Id", nullable = false)
-    private Task task;
+    private Long task_id;
 
     @NotNull(message = "Action type is required")
     private String action; // e.g., "CREATED", "UPDATED", "DELETED"

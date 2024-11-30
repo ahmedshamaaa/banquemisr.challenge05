@@ -7,6 +7,8 @@ import jakarta.validation.constraints.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.List;
+
 import lombok.*;
 
 @Entity
@@ -39,10 +41,11 @@ public class Task {
     @Column(nullable = false)
     private Priority priority;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn( nullable = false)
-    @NotBlank(message = "Title is mandatory")
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
     private User user;
+
 
     @Column(nullable = false)
     @FutureOrPresent(message = "Due date must be today or in the future")

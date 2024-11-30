@@ -19,7 +19,7 @@ public class HistoryService {
     @Transactional
     public void logHistory(Task task, String action, String performedBy) {
         History history = History.builder()
-                .task(task)
+                .task_id(task.getId())
                 .action(action)
                 .performedBy(performedBy)
                 .timestamp(LocalDateTime.now()).build();
